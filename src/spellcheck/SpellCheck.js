@@ -18,7 +18,7 @@ const SpellCheck = () => {
     };
 
     const handlerCheck = () => {
-        axios.post(`http://${process.env.REACT_APP_REST_API_SERVER_IP}:${process.env.REACT_APP_REST_API_SERVER_PORT}/checker`, { "sentence": input })
+        axios.post(`http://${process.env.REACT_APP_REST_API_SERVER_IP}:${process.env.REACT_APP_REST_API_SERVER_PORT}/checker`, { sentence: input })
             .then(response => {
                 setOutput(JSON.parse(response.data[0]));
             })
