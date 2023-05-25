@@ -8,7 +8,7 @@ RUN     git clone $GIT_REPOSITORY_ADDRESS
 RUN     mv ./spellcheck-react/* ./
 RUN     echo REACT_APP_REST_API_SERVER_IP=$REST_API_SERVER_IP > .env
 RUN     echo REACT_APP_REST_API_SERVER_PORT=$REST_API_SERVER_PORT >> .env
-RUN     npm install --silent
+RUN     npm install -s
 RUN     npm run --silent build
 
 FROM    nginx AS runtime

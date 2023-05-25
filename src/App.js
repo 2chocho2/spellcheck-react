@@ -3,8 +3,6 @@ import SpellCheck from "./spellcheck/SpellCheck"
 
 
 function App() {
-
-
   return (
     <>
       <Route path="/" component={SpellCheck} exact={true} />

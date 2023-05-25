@@ -20,9 +20,7 @@ const SpellCheck = () => {
     const handlerCheck = () => {
         axios.post(`http://${process.env.REACT_APP_REST_API_SERVER_IP}:${process.env.REACT_APP_REST_API_SERVER_PORT}/checker`, { "sentence": input })
             .then(response => {
-                console.log(response.data);
-                console.log(JSON.parse(response.data[0]));
-                setOutput(JSON.parse(response.data[0]));
+               setOutput(JSON.parse(response.data[0]));
 
             })
             .catch(error => {
@@ -65,8 +63,8 @@ const SpellCheck = () => {
                         <div className="input-text">
                             <div className="Result_text2">
                                 {output && output.result}
-                                {output && output.suggest.map(sgst =>
-                                    <p>{sgst.info}</p>
+                                {output && output.suggest.map((sgst, index) =>
+                                    <p key={index}>{sgst.info}</p>
                                 )}
                             </div>
 
