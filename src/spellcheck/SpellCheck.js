@@ -18,9 +18,12 @@ const SpellCheck = () => {
     };
 
     const handlerCheck = () => {
-        axios.post(`http://${process.env.REACT_APP_REST_API_SERVER_IP}:${process.env.REACT_APP_REST_API_SERVER_PORT}/checker`, { sentence: input })
+        axios.post(`http://${process.env.REACT_APP_REST_API_SERVER_IP}:${process.env.REACT_APP_REST_API_SERVER_PORT}/checker`, { "sentence": input })
             .then(response => {
+                console.log(response.data);
+                console.log(JSON.parse(response.data[0]));
                 setOutput(JSON.parse(response.data[0]));
+
             })
             .catch(error => {
                 console.log(error);
@@ -44,11 +47,8 @@ const SpellCheck = () => {
                     <div className="original_text">
                         <Title1 />
                         <div className="input-text">
-                            <textarea className="input-text-box" 
-                                        onChange={handlerChangeInput} 
-                                        placeholder="맞춤법 검사를 원하는 단어나 문장을 입력해주세요." />
-                            <button className="btn" 
-                                    onClick={handlerCheck}>검사 시작 <BsCheck className="check-icon" /> </button>
+                            <textarea className="input-text-box" onChange={handlerChangeInput} placeholder="맞춤법 검사를 원하는 단어나 문장을 입력해주세요." />
+                            <button className="btn" onClick={handlerCheck}>검사 시작 <BsCheck className="check-icon" /> </button>
                         </div>
                     </div>
 
